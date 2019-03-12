@@ -1,0 +1,809 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0B9872D7-F844-4C9D-A8E7-BBB1B6545CDA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JlueTaxSystemBeiJingBS</RootNamespace>
+    <AssemblyName>JlueTaxSystemBeiJingBS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.1\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.2.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.0\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.0\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\H-ui.css" />
+    <Content Include="css\ksindex.css" />
+    <Content Include="css\ksindex.old.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\styleedit.css" />
+    <Content Include="css\stylenew.css" />
+    <Content Include="Global.asax" />
+    <Content Include="js\common.js" />
+    <Content Include="js\database.js" />
+    <Content Include="js\dump_src.js" />
+    <Content Include="js\H-ui.js" />
+    <Content Include="js\jquery-1.11.3.min.js" />
+    <Content Include="js\jquery.cookie.js" />
+    <Content Include="js\json2.js" />
+    <Content Include="QuestionMain.aspx" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\css\layui.css" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\css\modules\laydate\default\date01.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\css\modules\laydate\default\date02.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\css\modules\laydate\default\icon_date.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\css\modules\laydate\default\laydate.css" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\css\modules\layer\default\icon.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\css\modules\layer\default\layer.css" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\css\modules\layer\default\loading-0.gif" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\layui.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\lay\modules\element.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\lay\modules\form.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\lay\modules\jquery.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\lay\modules\laydate.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\lay\modules\layer.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\transfer.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-css\common.css" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-font-icon\iconfont.css" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-images\common\select.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-images\common\select_up.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-images\png_icon\sbcxgr.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-images\png_icon\sbcxjdy.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-images\png_icon\sbzfdt.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-images\png_icon\wfwzxxcxl.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-js\common.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-js\jquery-1.9.1.min.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-module\select2\close01.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-module\select2\close02.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-module\select2\icon.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-module\select2\select2-spinner.gif" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-module\select2\select2.css" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-module\select2\select2.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-module\selectPage\selectpage.css" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-module\selectPage\selectPage.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-module\taxReturns\blue_left_icon.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-module\taxReturns\head_bg.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-module\taxReturns\orange_left_icon.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\tax-module\taxReturns\table.css" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\js\lib\pdfcheck.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\js\nssb\sbqc\sbqc_aqsb.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\js\nssb\sbqc\sbqc_qtsb.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\js\nssb\yqsb\yqsb.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\js\setting\setting_common.js" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\skin\css\comon0.css" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\skin\images\dswb.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\skin\images\dswx.jpg" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\skin\images\gswb.jpg" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\skin\images\gswx.jpg" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\skin\images\icons\czgc.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\skin\images\icons\left_icons01.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\skin\images\icons\left_icons03.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\skin\images\icons\left_icons04.png" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\skin\images\icons\left_icons06.png" />
+    <Content Include="sbzs-cjpt-web\abacus\sbzs_res\commonDeliver.js" />
+    <Content Include="sbzs-cjpt-web\abacus\sbzs_res\lhfjssb\js\lhfjssb.js" />
+    <Content Include="sbzs-cjpt-web\abacus\sbzs_res\sbzs.js" />
+    <Content Include="sbzs-cjpt-web\abacus\sbzs_res\ybnsrzzs\js\ybnsrzzs.js" />
+    <Content Include="sbzs-cjpt-web\abacus\view\nssb\sbzf\cp\cpDateControl.js" />
+    <Content Include="sbzs-cjpt-web\abacus\view\nssb\sbzf\sb\sbzf.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\css\abacus\images\head_bg.png" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\css\abacus\main.css" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\css\comon0.css" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\css\message\message_solid.css" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\img\bof_ct1.png" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\exAlert.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\formDebuging.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\formEngine.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\formulaEngine.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\formulaFunction.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\frameworkConstant.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\fsjpath.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\fxsmInitData.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\loadCssAndJs.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\loader.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\menuBtnEvent.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\responsive.tabs.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\sbCommon.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\viewDirective.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\viewEngine.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\viewEvent.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\viewInit.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\abacus\zjsign.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\framework\diyImport.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\layer-v2.2\layer\layer.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\layer-v2.2\layer\skin\default\loading-2.gif" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\layer-v2.2\layer\skin\layer.css" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\lib\angular.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\lib\jquery.min.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\lib\json3.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\lib\json3.min.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\lib\jsonpath.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\lib\mask.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\lib\message.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\message\Message.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\message\skin\default\Message.css" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\pxsp.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\js\ywbm.js" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\style\green\css\table.css" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb.html" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_qtsb.html" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\lhfjssb.html" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\lhfjssb\begin.html" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\lhfjssb\form\lhfjssb_BDA0610678.html" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\begin.html" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\form\ybnsrzzs_BDA0610113.html" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\form\ybnsrzzs_BDA0610337.html" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\form\ybnsrzzs_BDA0610338.html" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\form\ybnsrzzs_BDA0610339.html" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\form\ybnsrzzs_BDA0610566.html" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\form\ybnsrzzs_BDA0610606.html" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\form\ybnsrzzs_BDA0610758.html" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\form\ybnsrzzs_BDAbdcfqdkjsb.html" />
+    <Content Include="sbzs-cjpt-web\biz\setting\ybnsrzzsxbsz.htm" />
+    <Content Include="sbzs-cjpt-web\biz\setting\ybnsrzzsxbsz\setting\ybnsrzzsxbsz.html" />
+    <Content Include="sbzs-cjpt-web\biz\yqsb\yqsbqc.html" />
+    <Content Include="sbzs-cjpt-web\nssb\sbzf\sbzf.html" />
+    <Content Include="sbzs-cjpt-web\nssb\sbzf\sbzfmx.html" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\css\layui.css" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\css\modules\laydate\default\date01.png" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\css\modules\laydate\default\date02.png" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\css\modules\laydate\default\icon_date.png" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\css\modules\laydate\default\laydate.css" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\css\modules\laydate\default\month01.png" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\css\modules\laydate\default\month02.png" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\css\modules\layer\default\icon.png" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\css\modules\layer\default\layer.css" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\layui.js" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\lay\modules\laydate.js" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\lay\modules\layer.js" />
+    <Content Include="sbzs-cjpt-web\resources4\tax-css\common.css" />
+    <Content Include="sbzs-cjpt-web\resources4\tax-font-icon\iconfont.css" />
+    <Content Include="sbzs-cjpt-web\resources4\tax-images\png_icon\sbzf.png" />
+    <Content Include="sbzs-cjpt-web\resources4\tax-js\common.js" />
+    <Content Include="sbzs-cjpt-web\resources4\tax-js\jquery-1.9.1.min.js" />
+    <Content Include="sbzs-cjpt-web\resources4\tax-module\select2\select2.css" />
+    <Content Include="sbzs-cjpt-web\resources4\tax-module\selectPage\selectpage.css" />
+    <Content Include="sbzs-cjpt-web\resources4\tax-module\taxReturns\table.css" />
+    <Content Include="sbzs-cjpt-web\resources\css\comon0.css" />
+    <Content Include="sbzs-cjpt-web\resources\css\ecm-taglib\css\loadMask.css" />
+    <Content Include="sbzs-cjpt-web\resources\css\ecm-taglib\jquery\smartMenu.css" />
+    <Content Include="sbzs-cjpt-web\resources\css\message\message_solid.css" />
+    <Content Include="sbzs-cjpt-web\resources\css\zTreeStyle\zTreeStyle.css" />
+    <Content Include="sbzs-cjpt-web\resources\images\icons\left_sbjs_aqysb.png" />
+    <Content Include="sbzs-cjpt-web\resources\images\icons\left_sbjs_qtsb.png" />
+    <Content Include="sbzs-cjpt-web\resources\images\refresh1.png" />
+    <Content Include="sbzs-cjpt-web\resources\js\ecm-taglib\DatePicker\DatePicker.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\ecm-taglib\json2\json2.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\ecm-taglib\laydate-v1.1\laydate\laydate.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\ecm-taglib\laydate-v1.1\laydate\need\laydate.css" />
+    <Content Include="sbzs-cjpt-web\resources\js\ecm-taglib\laydate-v1.1\laydate\skins\default\laydate.css" />
+    <Content Include="sbzs-cjpt-web\resources\js\ecm-taglib\layer-v2.2\layer\layer.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\ecm-taglib\layer-v2.2\layer\skin\default\loading-0.gif" />
+    <Content Include="sbzs-cjpt-web\resources\js\ecm-taglib\layer-v2.2\layer\skin\layer.css" />
+    <Content Include="sbzs-cjpt-web\resources\js\ecm-taglib\laypage-v1.3\laypage\laypage.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\ecm-taglib\laypage-v1.3\laypage\skin\laypage.css" />
+    <Content Include="sbzs-cjpt-web\resources\js\ecm-taglib\message\Message.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\ecm-taglib\message\skin\default\Message.css" />
+    <Content Include="sbzs-cjpt-web\resources\js\fixed-table.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\frame\frame.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\jquery.base64.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\jquery.reveal.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\lib\angular.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\lib\jquery.min.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\lib\jquery.ztree.core.min.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\lib\jquery.ztree.excheck.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\lib\json3.min.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\lib\jsonpath.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\lib\message.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\setting\angular_compatible_IE7.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\setting\setViewDirective.js" />
+    <Content Include="sbzs-cjpt-web\resources\js\setting\setViewEngine.js" />
+    <Content Include="sbzs-cjpt-web\resources\style\green\css\table.css" />
+    <Content Include="sbzs-cjpt-web\sbzs_res\common.js" />
+    <Content Include="sbzs-cjpt-web\sbzs_res\lhfjssb\js\lhfjssbCustom.js" />
+    <Content Include="sbzs-cjpt-web\sbzs_res\lhfjssb\js\lhfjssb_cus.js" />
+    <Content Include="sbzs-cjpt-web\sbzs_res\ybnsrzzs\js\ybnsrzzspbfb.js" />
+    <Content Include="sbzs-cjpt-web\setting_res\ybnsrzzsxbsz\ybnsrzzsxbsz.js" />
+    <Content Include="sbzs-cjpt-web\view\common\gy.js" />
+    <Content Include="sbzs-cjpt-web\view\nssb\sbxxcx\sbcxzdy.js" />
+    <Content Include="sbzs-cjpt-web\view\nssb\sbxxcx\sbxxcx.js" />
+    <Content Include="sbzs-cjpt-web\view\nssb\sbzf\cp\cpDateControl.js" />
+    <Content Include="sbzs-cjpt-web\view\nssb\sbzf\sb\sbzfmx.js" />
+    <Content Include="sxsq-cjpt-web\abacus\_res_\js\lib\jquery.min.js" />
+    <Content Include="tycx-cjpt-web\abacus\_res_\css\message\message_solid.css" />
+    <Content Include="tycx-cjpt-web\abacus\_res_\js\layer-v2.2\layer\layer.js" />
+    <Content Include="tycx-cjpt-web\abacus\_res_\js\layer-v2.2\layer\skin\layer.css" />
+    <Content Include="tycx-cjpt-web\abacus\_res_\js\laypage\laypage.js" />
+    <Content Include="tycx-cjpt-web\abacus\_res_\js\laypage\skin\laypage.css" />
+    <Content Include="tycx-cjpt-web\abacus\_res_\js\lib\angular.js" />
+    <Content Include="tycx-cjpt-web\abacus\_res_\js\lib\jquery.min.js" />
+    <Content Include="tycx-cjpt-web\abacus\_res_\js\lib\message.js" />
+    <Content Include="tycx-cjpt-web\abacus\_res_\js\message\Message.js" />
+    <Content Include="tycx-cjpt-web\abacus\_res_\js\message\skin\default\Message.css" />
+    <Content Include="tycx-cjpt-web\cxpt\4thLvlFunTabsInit.html" />
+    <Content Include="tycx-cjpt-web\resources4\layui\css\layui.css" />
+    <Content Include="tycx-cjpt-web\resources4\layui\css\modules\laydate\default\date01.png" />
+    <Content Include="tycx-cjpt-web\resources4\layui\css\modules\laydate\default\date02.png" />
+    <Content Include="tycx-cjpt-web\resources4\layui\css\modules\laydate\default\icon_date.png" />
+    <Content Include="tycx-cjpt-web\resources4\layui\css\modules\laydate\default\laydate.css" />
+    <Content Include="tycx-cjpt-web\resources4\layui\css\modules\layer\default\layer.css" />
+    <Content Include="tycx-cjpt-web\resources4\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="tycx-cjpt-web\resources4\layui\layui.js" />
+    <Content Include="tycx-cjpt-web\resources4\layui\lay\modules\element.js" />
+    <Content Include="tycx-cjpt-web\resources4\layui\lay\modules\form.js" />
+    <Content Include="tycx-cjpt-web\resources4\layui\lay\modules\laydate.js" />
+    <Content Include="tycx-cjpt-web\resources4\layui\lay\modules\layer.js" />
+    <Content Include="tycx-cjpt-web\resources4\tax-css\common.css" />
+    <Content Include="tycx-cjpt-web\resources4\tax-images\common\select.png" />
+    <Content Include="tycx-cjpt-web\resources4\tax-images\common\select_up.png" />
+    <Content Include="tycx-cjpt-web\resources4\tax-images\png_icon\yhscx.png" />
+    <Content Include="tycx-cjpt-web\resources4\tax-js\common.js" />
+    <Content Include="tycx-cjpt-web\resources4\tax-js\jquery-1.9.1.min.js" />
+    <Content Include="tycx-cjpt-web\resources4\tax-module\select2\close01.png" />
+    <Content Include="tycx-cjpt-web\resources4\tax-module\select2\icon.png" />
+    <Content Include="tycx-cjpt-web\resources4\tax-module\select2\select2-spinner.gif" />
+    <Content Include="tycx-cjpt-web\resources4\tax-module\select2\select2.css" />
+    <Content Include="tycx-cjpt-web\resources4\tax-module\select2\select2.js" />
+    <Content Include="tycx-cjpt-web\resources\js\ecm-taglib\DatePicker\DatePicker.js" />
+    <Content Include="tycx-cjpt-web\resources\js\lib\cascade-select.js" />
+    <Content Include="tycx-cjpt-web\resources\js\lib\json2.js" />
+    <Content Include="tycx-cjpt-web\resources\js\tycx\base-tycx2.js" />
+    <Content Include="tycx-cjpt-web\resources\js\tycx\timeValidate.js" />
+    <Content Include="tycx-cjpt-web\resources\js\tycx\tycxDataTable.js" />
+    <Content Include="tycx-cjpt-web\resources\js\tycx\tycxFormDate.js" />
+    <Content Include="tycx-cjpt-web\resources\xml\hx_dm_gy_sblx.xml" />
+    <Content Include="tycx-cjpt-web\resources\xml\hx_dm_gy_zsxm.xml" />
+    <Content Include="tycx-cjpt-web\tycx-res\css\comon0.css" />
+    <Content Include="tycx-cjpt-web\tycx-res\skin\css\comon0.css" />
+    <Content Include="tycx-cjpt-web\view\sscx\yhscx\sbzscx\sbxxcx\sbxxcx.js" />
+    <Content Include="VideoManage\css\QuestionMain.css" />
+    <Content Include="VideoManage\css\VideoIndex.css" />
+    <Content Include="VideoManage\image\bc.png" />
+    <Content Include="VideoManage\image\book.png" />
+    <Content Include="VideoManage\image\circle.png" />
+    <Content Include="VideoManage\image\mrd.png" />
+    <Content Include="VideoManage\image\xzz.png" />
+    <Content Include="VideoManage\js\mask.js" />
+    <Content Include="VideoManage\VideoGDTax.aspx" />
+    <Content Include="VideoManage\VideoManage.aspx" />
+    <Content Include="VideoManage\videostyle\image\arrow.png" />
+    <Content Include="VideoManage\videostyle\image\left.png" />
+    <Content Include="VideoManage\videostyle\image\play.png" />
+    <Content Include="VideoManage\videostyle\image\right.png" />
+    <Content Include="VideoManage\videostyle\jquery-1.8.0.min.js" />
+    <Content Include="VideoManage\videostyle\memcachecheck.js" />
+    <Content Include="VideoManage\videostyle\player.swf" />
+    <Content Include="VideoManage\videostyle\polyvplayer.min.js" />
+    <Content Include="VideoManage\videostyle\video.css" />
+    <Content Include="VideoManage\videostyle\video.js" />
+    <Content Include="Video\css\boxsizing.htc" />
+    <Content Include="Video\css\video.css" />
+    <Content Include="Video\images\dot.png" />
+    <Content Include="Video\images\left.png" />
+    <Content Include="Video\images\play.png" />
+    <Content Include="Video\images\return.png" />
+    <Content Include="Video\images\right.png" />
+    <Content Include="Video\js\jquery-1.12.4.min.js" />
+    <Content Include="Video\js\video.js" />
+    <Content Include="Video\Video.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="industry.xml" />
+    <Content Include="xxmh\html\index_login.aspx" />
+    <Content Include="xxmh\html\index_origin.html" />
+    <Content Include="xxmh\html\loading.html" />
+    <Content Include="xxmh\html\qhsf.html" />
+    <Content Include="xxmh\html\tzgglist.html" />
+    <Content Include="xxmh\resources4\layui\css\layui.css" />
+    <Content Include="xxmh\resources4\layui\css\modules\layer\default\icon.png" />
+    <Content Include="xxmh\resources4\layui\css\modules\layer\default\layer.css" />
+    <Content Include="xxmh\resources4\layui\css\modules\layer\default\loading-1.gif" />
+    <Content Include="xxmh\resources4\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="xxmh\resources4\layui\images\badge.png" />
+    <Content Include="xxmh\resources4\layui\layui.js" />
+    <Content Include="xxmh\resources4\layui\lay\modules\element.js" />
+    <Content Include="xxmh\resources4\layui\lay\modules\form.js" />
+    <Content Include="xxmh\resources4\layui\lay\modules\layer.js" />
+    <Content Include="xxmh\resources4\layui\transfer.js" />
+    <Content Include="xxmh\resources4\tax-css\common.css" />
+    <Content Include="xxmh\resources4\tax-css\index.css" />
+    <Content Include="xxmh\resources4\tax-font-icon\iconfont.css" />
+    <Content Include="xxmh\resources4\tax-images\common\icon_add.png" />
+    <Content Include="xxmh\resources4\tax-images\common\logintop.png" />
+    <Content Include="xxmh\resources4\tax-images\login\gzfw_tit1.png" />
+    <Content Include="xxmh\resources4\tax-images\login\gzfw_tit2.png" />
+    <Content Include="xxmh\resources4\tax-images\login\gzfw_titico1.png" />
+    <Content Include="xxmh\resources4\tax-images\login\gzfw_titico2.png" />
+    <Content Include="xxmh\resources4\tax-images\login\loginimg.png" />
+    <Content Include="xxmh\resources4\tax-images\login\login_d.png" />
+    <Content Include="xxmh\resources4\tax-images\login\login_ico1.png" />
+    <Content Include="xxmh\resources4\tax-images\login\login_ico2.png" />
+    <Content Include="xxmh\resources4\tax-images\login\login_ico3.png" />
+    <Content Include="xxmh\resources4\tax-images\logo\logo_bj.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\bsjdjjgxxcx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\cktsgl.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\dzzl.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\flzzyjjsx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\fpsy.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\fpxxcx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\gtgshdddexxcx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\jcjc.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\jckxcx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\lsbsczcx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\nsrmyddc.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\nsrxq.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\nsrxx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\qjsk.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\qsxxcx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\sbxxcx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\sfsbjjn.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\ssjm.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\sszjjgxxcx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\sszyfwjggl.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\swxzxk.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\wdxx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\wfwzxxcxl.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\ybtdsgl.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\yhgl.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\yhscx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\yhxxcx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\yybs.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\yydjap.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\zhxxbg.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\zmkj.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\zmxxcx.png" />
+    <Content Include="xxmh\resources4\tax-images\png_icon\zxjh.png" />
+    <Content Include="xxmh\resources4\tax-module\vticker\jquery.vticker-min.js" />
+    <Content Include="xxmh\resources\css\newcss\addstyle.css" />
+    <Content Include="xxmh\resources\images\common\favicon.ico" />
+    <Content Include="xxmh\resources\js\ecm-taglib\json2\json2.js" />
+    <Content Include="xxmh\resources\js\golobalTitle.js" />
+    <Content Include="xxmh\resources\js\goPages.js" />
+    <Content Include="xxmh\resources\js\html5.min.js" />
+    <Content Include="xxmh\resources\js\index_login.js" />
+    <Content Include="xxmh\resources\js\jquery.lazyload.min.js" />
+    <Content Include="xxmh\resources\js\loginDbtxData.js" />
+    <Content Include="xxmh\resources\js\menuUtil.js" />
+    <Content Include="xxmh\resources\js\mlog.js" />
+    <Content Include="xxmh\resources\js\portal.js" />
+    <Content Include="xxmh\resources\js\respond.min.js" />
+    <Content Include="xxmh\resources\js\sjzftb.js" />
+    <Content Include="xxmh\resources\js\urlLogic.js" />
+    <Content Include="xxmh\resources\js\zxkf.js" />
+    <Content Include="xxmh\resources\skin\css\comon0.css" />
+    <Content Include="xxmh\resources\skin\css\index.css" />
+    <Content Include="xxmh\resources\skin\css\qystyle.css" />
+    <Content Include="xxmh\resources\skin\css\tzgg.css" />
+    <Content Include="xxmh\resources\skin\images\arr_down.png" />
+    <Content Include="xxmh\resources\skin\images\arr_up.png" />
+    <Content Include="xxmh\resources\skin\images\index\bs_ico1.png" />
+    <Content Include="xxmh\resources\skin\images\index\bs_ico2.png" />
+    <Content Include="xxmh\resources\skin\images\index\bs_ico3.png" />
+    <Content Include="xxmh\resources\skin\images\index\bs_ico4.png" />
+    <Content Include="xxmh\resources\skin\images\index\bs_ico6.png" />
+    <Content Include="xxmh\resources\skin\images\index\bs_ico7.png" />
+    <Content Include="xxmh\resources\skin\images\index\cx_ico1.png" />
+    <Content Include="xxmh\resources\skin\images\index\cx_ico11.png" />
+    <Content Include="xxmh\resources\skin\images\index\cx_ico12.png" />
+    <Content Include="xxmh\resources\skin\images\index\cx_ico4.png" />
+    <Content Include="xxmh\resources\skin\images\index\cx_ico6.png" />
+    <Content Include="xxmh\resources\skin\images\index\cx_ico9.png" />
+    <Content Include="xxmh\resources\skin\images\index\cx_swsswsggl_c.png" />
+    <Content Include="xxmh\resources\skin\images\index\down.png" />
+    <Content Include="xxmh\resources\skin\images\index\gg_bg.png" />
+    <Content Include="xxmh\resources\skin\images\index\hd_bg.png" />
+    <Content Include="xxmh\resources\skin\images\index\hd_ico1.png" />
+    <Content Include="xxmh\resources\skin\images\index\hd_ico2.png" />
+    <Content Include="xxmh\resources\skin\images\index\hd_ico3.png" />
+    <Content Include="xxmh\resources\skin\images\index\hd_ico4.png" />
+    <Content Include="xxmh\resources\skin\images\index\hd_ico5.png" />
+    <Content Include="xxmh\resources\skin\images\index\hd_ico6.png" />
+    <Content Include="xxmh\resources\skin\images\index\ico_bg.gif" />
+    <Content Include="xxmh\resources\skin\images\index\up.png" />
+    <Content Include="xxmh\resources\skin\js\jquery.js" />
+    <Content Include="xxmh\resources\skin\js\jquery.SuperSlide.2.1.1.js" />
+    <Content Include="xxmh\resources\skin\js\js.js" />
+    <Content Include="zlpz-cjpt-web\abacus\resources4\layui\css\modules\layer\default\icon.png" />
+    <Content Include="zlpz-cjpt-web\abacus\resources4\layui\css\modules\layer\default\layer.css" />
+    <Content Include="zlpz-cjpt-web\abacus\resources4\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="zlpz-cjpt-web\abacus\resources4\layui\layui.js" />
+    <Content Include="zlpz-cjpt-web\abacus\resources4\layui\lay\modules\layer.js" />
+    <Content Include="zlpz-cjpt-web\abacus\resources4\tax-module\table_step\table-step.css" />
+    <Content Include="zlpz-cjpt-web\abacus\resources4\tax-module\table_step\table-step.js" />
+    <Content Include="zlpz-cjpt-web\abacus\resources\css\abacus\main.css" />
+    <Content Include="zlpz-cjpt-web\abacus\resources\css\ecm-taglib\message\Message.css" />
+    <Content Include="zlpz-cjpt-web\abacus\resources\css\message\message_solid.css" />
+    <Content Include="zlpz-cjpt-web\abacus\resources\js\ecm-taglib\layer-v2.2\layer\extend\layer.ext.js" />
+    <Content Include="zlpz-cjpt-web\abacus\resources\js\lib\jquery.min.js" />
+    <Content Include="zlpz-cjpt-web\abacus\resources\js\lib\pdfcheck.js" />
+    <Content Include="zlpz-cjpt-web\resources\css\common.css" />
+    <Content Include="zlpz-cjpt-web\resources\css\comon0.css" />
+    <Content Include="zlpz-cjpt-web\resources\css\ecm-taglib\css\loadMask.css" />
+    <Content Include="zlpz-cjpt-web\resources\css\stylecon.css" />
+    <Content Include="zlpz-cjpt-web\resources\css\table.css" />
+    <Content Include="zlpz-cjpt-web\resources\js\ecm-taglib\message\Message.js" />
+    <Content Include="zlpz-cjpt-web\resources\js\ecm-taglib\message\skin\default\Message.css" />
+    <Content Include="zlpz-cjpt-web\resources\js\fjqz\jquery.base64.js" />
+    <Content Include="zlpz-cjpt-web\resources\js\framework\diyImport.js" />
+    <Content Include="zlpz-cjpt-web\resources\js\lib\jquery.media.js" />
+    <Content Include="zlpz-cjpt-web\resources\js\lib\jquery.min.js" />
+    <Content Include="zlpz-cjpt-web\resources\js\lib\mask.js" />
+    <Content Include="zlpz-cjpt-web\view\ssws\photo-scan-layer.32-adg161122171739.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AutofacMVCConfig.cs" />
+    <Compile Include="App_Start\AutofacWebApiConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ChuShiHua.ashx.cs">
+      <DependentUpon>ChuShiHua.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Code\ActionResult.cs" />
+    <Compile Include="Code\AuthFilterAttribute.cs" />
+    <Compile Include="Code\Check.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Code\CurrentUser.cs" />
+    <Compile Include="Code\GDTXBeiJingUserYSBQC.cs" />
+    <Compile Include="Code\GDTXBeiJingUserYSBQCReportData.cs" />
+    <Compile Include="Controllers\sycdControllerController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\viewController.cs" />
+    <Compile Include="Models\GDTXDate.cs" />
+    <Compile Include="Code\GTXMethod.cs" />
+    <Compile Include="Code\GTXNameValue.cs" />
+    <Compile Include="Code\GTXResult.cs" />
+    <Compile Include="Code\IYsbqcSetting.cs" />
+    <Compile Include="Code\YsbqcSetting.cs" />
+    <Compile Include="Controllers\controllerController.cs" />
+    <Compile Include="Controllers\cxptController.cs" />
+    <Compile Include="Controllers\cygnControllerController.cs" />
+    <Compile Include="Controllers\formulaController.cs" />
+    <Compile Include="Controllers\htmlController.cs" />
+    <Compile Include="Controllers\jyxxController.cs" />
+    <Compile Include="Controllers\lhfjssbController.cs" />
+    <Compile Include="Controllers\mlogControllerController.cs" />
+    <Compile Include="Controllers\myCenterControllerController.cs" />
+    <Compile Include="Controllers\portalSerController.cs" />
+    <Compile Include="Controllers\qjssController.cs" />
+    <Compile Include="Controllers\saveController.cs" />
+    <Compile Include="Controllers\sbqcController.cs" />
+    <Compile Include="Controllers\sbqc_aqsbController.cs" />
+    <Compile Include="Controllers\sbqc_qtsbController.cs" />
+    <Compile Include="Controllers\sbxxcxController.cs" />
+    <Compile Include="Controllers\sbzfController.cs" />
+    <Compile Include="Controllers\sbzsController.cs" />
+    <Compile Include="Controllers\settingController.cs" />
+    <Compile Include="Controllers\sffxController.cs" />
+    <Compile Include="Controllers\sswsController.cs" />
+    <Compile Include="Controllers\sxsqYwblController.cs" />
+    <Compile Include="Controllers\tzggController.cs" />
+    <Compile Include="Controllers\viewsControlControllerController.cs" />
+    <Compile Include="Controllers\ybnsrzzsController.cs" />
+    <Compile Include="Controllers\ybnsrzzsxbszController.cs" />
+    <Compile Include="Controllers\yqsbController.cs" />
+    <Compile Include="Controllers\yqsbqcController.cs" />
+    <Compile Include="Controllers\zlpzController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="publicmethod.cs" />
+    <Compile Include="QuestionMain.aspx.cs">
+      <DependentUpon>QuestionMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VideoManage\GetVideo.ashx.cs">
+      <DependentUpon>GetVideo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="VideoManage\VideoGDTax.aspx.cs">
+      <DependentUpon>VideoGDTax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VideoManage\VideoGDTax.aspx.designer.cs">
+      <DependentUpon>VideoGDTax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VideoManage\VideoManage.aspx.cs">
+      <DependentUpon>VideoManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VideoManage\VideoManage.aspx.designer.cs">
+      <DependentUpon>VideoManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Video\Video.aspx.cs">
+      <DependentUpon>Video.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Video\Video.aspx.designer.cs">
+      <DependentUpon>Video.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="xxmh\html\index_login.aspx.cs">
+      <DependentUpon>index_login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="xxmh\html\index_login.aspx.designer.cs">
+      <DependentUpon>index_login.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="portalExt\controller\" />
+    <Folder Include="sxsq-cjpt-web\sxsqYwbl\" />
+    <Folder Include="xxmh\userInfoController\" />
+    <Folder Include="yyzxn-cjpt-web\yyzx\qjss\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\FunctionNotOpen.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ChuShiHua.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="VideoManage\GetVideo.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="xxmh\cygnController\getCygncdDetail.json" />
+    <Content Include="xxmh\mlogController\addLog.json" />
+    <Content Include="xxmh\myCenterController\getDbsx.json" />
+    <Content Include="xxmh\myCenterController\getSstx.json" />
+    <Content Include="xxmh\portalSer\checkLogin.json" />
+    <Content Include="xxmh\portalSer\getRootMenu.json" />
+    <Content Include="xxmh\portalSer\getSubMenus.sbjs.json" />
+    <Content Include="xxmh\portalSer\getSubMenus.wycx.json" />
+    <Content Include="xxmh\resources4\layui\font\iconfont.eot" />
+    <Content Include="xxmh\resources4\layui\font\iconfont.ttf" />
+    <Content Include="xxmh\resources4\layui\font\iconfont.woff" />
+    <Content Include="xxmh\resources4\tax-font-icon\iconfont.eot" />
+    <Content Include="xxmh\resources4\tax-font-icon\iconfont.ttf" />
+    <Content Include="xxmh\resources4\tax-font-icon\iconfont.woff" />
+    <Content Include="xxmh\sycdController\getCd.json" />
+    <Content Include="xxmh\viewsControlController\getGolobalTitle.json" />
+    <Content Include="xxmh\viewsControlController\getShowGdsbz.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\make.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="zyywn-cjpt-web\tzgg\syTzgg.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="zlpz-cjpt-web\zlpz\openPdf.do" />
+    <Content Include="zlpz-cjpt-web\zlpz\openPdfshow.do" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tycx-cjpt-web\cxpt\query.json" />
+    <Content Include="tycx-cjpt-web\resources4\layui\font\iconfont.eot" />
+    <Content Include="tycx-cjpt-web\resources4\layui\font\iconfont.ttf" />
+    <Content Include="tycx-cjpt-web\resources4\layui\font\iconfont.woff" />
+    <Content Include="tycx-cjpt-web\viewsControlController\getCxShowGdsbz.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\font\iconfont.eot" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\font\iconfont.ttf" />
+    <Content Include="sbzs-cjpt-web\abacus\resources4\layui\font\iconfont.woff" />
+    <Content Include="sbzs-cjpt-web\abacus\resources\js\frame\bmd.json" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\fonts\iconfont.eot" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\fonts\iconfont.ttf" />
+    <Content Include="sbzs-cjpt-web\abacus\_res_\fonts\iconfont.woff" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\cburlControl.CWKJZDBA.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\enterSbqc.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\refreshSbqc" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\refreshSbqc.refresh.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\refreshSbqc.reset.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\sbqxControl.SBQC.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\sburlControl.LHFJSSB.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\sburlControl.YBNSRZZS.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\setting\dm_sb_sbywbmxmc.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\setting\doHead.jsp" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\setting\doWord.jsp" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\setting\lhCwbbbsKz.jsp" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\setting\lhSbbbs.jsp" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\setting\lhSbbbsKz.jsp" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_qtsb\enterQtsb.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_qtsb\sburlControl.YHSSB.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_qtsb\setting\doWord.jsp" />
+    <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_qtsb\setting\lhQtsbbs.jsp" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\lhfjssb\xFormula.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\lhfjssb\xSheets.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\form\dm_gy_sfzjlx.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\form\dm_sb_cpycpzl.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\form\dm_zzs_sysl.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\form\nf_dm_sb_zzs_jsxzdm.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\form\nf_dm_sb_zzs_msxzdm.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\xFormula.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\xInitData.init.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\xInitData.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\xSheets.json" />
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\xTempSave.json" />
+    <Content Include="sbzs-cjpt-web\biz\setting\ybnsrzzsxbsz\setting\labelTips.json" />
+    <Content Include="sbzs-cjpt-web\biz\setting\ybnsrzzsxbsz\setting\rule.json" />
+    <Content Include="sbzs-cjpt-web\biz\yqsb\yqsbqc\enterYqsbUrl.LHFJSSB.json" />
+    <Content Include="sbzs-cjpt-web\biz\yqsb\yqsbqc\enterYqsbUrl.YBNSRZZS.json" />
+    <Content Include="sbzs-cjpt-web\biz\yqsb\yqsbqc\enterYqsbUrl.YHSSB.json" />
+    <Content Include="sbzs-cjpt-web\formula\exttbsm.json" />
+    <Content Include="sbzs-cjpt-web\jyxx\updateJyxx.json" />
+    <Content Include="sbzs-cjpt-web\nssb\sbzf\getSbqx.json" />
+    <Content Include="sbzs-cjpt-web\nssb\sbzf\getsbzf.json" />
+    <Content Include="sbzs-cjpt-web\nssb\sbzf\getsbzfmx.json" />
+    <Content Include="sbzs-cjpt-web\nssb\sbzf\getsbzfmx.json.1" />
+    <Content Include="sbzs-cjpt-web\nssb\sbzf\getSsqz.json" />
+    <Content Include="sbzs-cjpt-web\nssb\zzsybnsr\sffx\getData.json" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\font\iconfont.eot" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\font\iconfont.ttf" />
+    <Content Include="sbzs-cjpt-web\resources4\layui\font\iconfont.woff" />
+    <Content Include="sbzs-cjpt-web\save\saveYsqbw.json" />
+    <Content Include="sbzs-cjpt-web\sbxxcx\getSbxxcx.json" />
+    <Content Include="sbzs-cjpt-web\sbxxcx\openPdf.json" />
+    <Content Include="sbzs-cjpt-web\setting\mainSetting.YBNSRZZSXBSZ.json" />
+    <Content Include="sbzs-cjpt-web\setting\saveData.YBNSRZZSXBSZ.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\sbzf\sbzfmx.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sbzs-cjpt-web\biz\sbzs\lhfjssb\xInitData.init.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\zzsybnsrsbInitData.industry.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sbzs-cjpt-web\biz\sbzs\ybnsrzzs\zzsybnsrsbInitData.commerce.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\sbxxcx\sbxxcx.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\view\sbxxcx.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\sbqc_aqsb\setting.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\sbqc_qtsb\setting.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\sbzs\ybnsrzzs.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2920</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2920/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
