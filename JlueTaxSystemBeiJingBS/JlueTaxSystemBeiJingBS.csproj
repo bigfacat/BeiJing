@@ -122,6 +122,7 @@
     <Content Include="css\styleedit.css" />
     <Content Include="css\stylenew.css" />
     <Content Include="Global.asax" />
+    <Content Include="Instruction.html" />
     <Content Include="js\common.js" />
     <Content Include="js\database.js" />
     <Content Include="js\dump_src.js" />
