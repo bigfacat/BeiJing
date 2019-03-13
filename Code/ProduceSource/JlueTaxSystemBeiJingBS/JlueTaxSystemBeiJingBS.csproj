@@ -778,6 +778,7 @@
     <None Include="Properties\PublishProfiles\IIS.pubxml" />
     <Content Include="xxmh\portalSer\getSubMenus.sbjs.origin.json" />
     <Content Include="sbzs-cjpt-web\biz\sbqc\sbqc_aqsb\sbqxControl" />
+    <Content Include="xxmh\portalSer\getSubMenus.wycx.origin.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
