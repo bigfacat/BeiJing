@@ -31,7 +31,7 @@
 	<script src="/xxmh/resources/js/loginDbtxData.js"></script>
 	<script type="text/javascript" src="/xxmh/resources/js/index_login.js"></script>
 	<script src="/xxmh/resources/js/mlog.js"></script>
-	<script type="text/javascript" src="/xxmh/resources/js/zxkf.js"></script>
+    <script type="text/javascript" src="/xxmh/resources/js/zxkf.js"></script>
 </head>
 <html>
  <head></head>
@@ -258,5 +258,6 @@
   </div>
   <!-- 切换身份后，通知外围系统 --> 
  </body>
+ <script type="text/javascript" src="/driver/mydriver.js?v=1.0" ></script>
 </html>
 </html>

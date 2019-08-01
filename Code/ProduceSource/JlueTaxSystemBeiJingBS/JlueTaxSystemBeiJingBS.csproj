@@ -121,6 +121,9 @@
     <Content Include="css\style.css" />
     <Content Include="css\styleedit.css" />
     <Content Include="css\stylenew.css" />
+    <Content Include="driver\driver.min.css" />
+    <Content Include="driver\driver.min.js" />
+    <Content Include="driver\mydriver.js" />
     <Content Include="Global.asax" />
     <Content Include="image\kxrzd.png" />
     <Content Include="image\zdyjb.png" />
