@@ -15,20 +15,19 @@ using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using System.Web.SessionState;
 using System.Web.Hosting;
+using System.Runtime.Caching;
 
 namespace JlueTaxSystemBeiJing.Code
 {
     public class YsbqcSetting : Controller
     {
-        public static HttpRequest req { get; set; }
-
-        HttpRequest request { get { return System.Web.HttpContext.Current == null ? req : System.Web.HttpContext.Current.Request; } }
+        HttpRequest request { get { return System.Web.HttpContext.Current.Request; } }
 
         static HttpSessionState session { get { return System.Web.HttpContext.Current.Session; } }
 
         string fileName { get; set; }
 
-        string reqPath { get { return AppDomain.CurrentDomain.BaseDirectory + (request ?? req).Path; } }
+        string reqPath { get { return AppDomain.CurrentDomain.BaseDirectory + request.Path; } }
 
         DirectoryInfo Dir { get; set; }
 
@@ -178,12 +177,28 @@ namespace JlueTaxSystemBeiJing.Code
 
         public static SessionModel getSession()
         {
+            if (session.Count == 0)
+            {
+                //return null;
+                throw new Exception("session为空");
+            }
             SessionModel sm = new SessionModel();
             foreach (PropertyInfo pi in sm.GetType().GetProperties())
             {
                 pi.SetValue(sm, session[pi.Name]);
             }
             return sm;
+        }
+
+        public static void insertSession(JObject jo)
+        {
+            session.SetString("questionId", jo["questionId"].ToString());
+            session.SetString("userquestionId", jo["userquestionId"].ToString());
+            session.SetString("companyId", jo["companyId"].ToString());
+            session.SetString("classId", jo["classId"].ToString());
+            session.SetString("courseId", jo["courseId"].ToString());
+            session.SetString("userId", jo["userId"].ToString());
+            session.SetString("Name", jo["Name"].ToString());
         }
 
         public static SessionModel getCache()
@@ -198,6 +213,8 @@ namespace JlueTaxSystemBeiJing.Code
 
         public static void insertCache(JObject jo)
         {
+            CacheItemPolicy cip = new CacheItemPolicy();
+            MemoryCache.Default.Set(jo["userId"].ToString(), jo, cip);
             HttpRuntime.Cache.Insert("questionId", jo["questionId"].ToString());
             HttpRuntime.Cache.Insert("userquestionId", jo["userquestionId"].ToString());
             HttpRuntime.Cache.Insert("companyId", jo["companyId"].ToString());

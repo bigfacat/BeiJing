@@ -19,8 +19,12 @@ namespace JlueTaxSystemBeiJing
 
             AutofacMVCConfig.Run();
 
+            GlobalFilters.Filters.Add(new AuthenticationFilter());
+            GlobalFilters.Filters.Add(new AuthorizationFilter());
             GlobalFilters.Filters.Add(new ActionFilter());
+            GlobalFilters.Filters.Add(new ResultFilter());
             GlobalFilters.Filters.Add(new ExceptionFilter());
+
         }
 
         public override void Init()
@@ -34,19 +38,21 @@ namespace JlueTaxSystemBeiJing
         private void myBeginRequest()
         {
             string path = Request.Path;
-            if (Regex.IsMatch(path, "biz"))
+            if (Regex.IsMatch(path, "biz") || Regex.IsMatch(path, "xxmh/html/index_login.html"))
             {
                 RouteTable.Routes.RouteExistingFiles = true;
+                //Context.Handler = new CustomHandler();
+                //Context.RemapHandler(new CustomHandler());
             }
             else
             {
                 RouteTable.Routes.RouteExistingFiles = false;
             }
+
         }
 
         private void myMapRequestHandler()
         {
-            YsbqcSetting.req = Request;
         }
 
     }

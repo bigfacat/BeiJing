@@ -9,10 +9,12 @@ using Newtonsoft.Json;
 using JlueTaxSystemBeiJing.Models;
 using System.Xml;
 using System.IO;
+using System.Web.SessionState;
+using System.Web.Mvc;
 
 namespace JlueTaxSystemBeiJing.Code
 {
-    public class Service
+    public class Service :Controller
     {
         YsbqcSetting set { get; set; }
 
@@ -32,19 +34,21 @@ namespace JlueTaxSystemBeiJing.Code
 
         public async Task SaveDataService(string ywbm, JToken input_jo)
         {
+            HttpContext hc = System.Web.HttpContext.Current;
             await Task.Run(() =>
-              {
-                  if (ywbm == Ywbm.cwbbydy.ToString())
-                  {
-                      return;
-                  }
-                  qc = repos.getUserYSBQC(ywbm);
-                  GTXResult saveresult = repos.SaveUserYSBQCReportData(input_jo, qc.Id, ywbm);
-                  if (saveresult.IsSuccess)
-                  {
-                      UpdateYsbqcSBSE(qc.Id, input_jo, ywbm);
-                  }
-              });
+            {
+                System.Web.HttpContext.Current = hc;
+                if (ywbm == Ywbm.cwbbydy.ToString())
+                {
+                    return;
+                }
+                qc = repos.getUserYSBQC(ywbm);
+                GTXResult saveresult = repos.SaveUserYSBQCReportData(input_jo, qc.Id, ywbm);
+                if (saveresult.IsSuccess)
+                {
+                    UpdateYsbqcSBSE(qc.Id, input_jo, ywbm);
+                }
+            });
         }
 
         public void UpdateYsbqcSBSE(int userYSBQCId, JToken input_jo, string ywbm)
@@ -71,8 +75,10 @@ namespace JlueTaxSystemBeiJing.Code
 
         public async Task getInitData(string ywbm, JObject initJobj)
         {
+            HttpContext hc = System.Web.HttpContext.Current;
             await Task.Run(() =>
             {
+                System.Web.HttpContext.Current = hc;
                 qc = repos.getUserYSBQC(ywbm);
                 JToken dbData = repos.getUserYSBQCReportData(qc.Id, qc.ywbm);
                 if (dbData.HasValues)
@@ -104,20 +110,24 @@ namespace JlueTaxSystemBeiJing.Code
                             gd = repos.getGDTXDate(qc.ywbm);
                             nsrjbxx = (JObject)body["qcs"]["initData"]["nsrjbxx"];
                             JObject fjssbInitData = (JObject)body["qcs"]["initData"]["fjssbInitData"];
+                            JToken xgmzg = body.SelectToken("qcs.jzxx.xgmzg");
                             nsrjbxx["tbrq"] = gd.tbrq;
                             fjssbInitData["sssq"]["rqQ"] = gd.skssqq;
                             fjssbInitData["sssq"]["rqZ"] = gd.skssqz;
                             setNsrxx(nsrjbxx);
+                            setSfzzsxgmjz(xgmzg);
                             initJobj["body"] = new JValue(JsonConvert.SerializeObject(body));
                             break;
                         case "qysds_a_18yjd":
                             gd = repos.getGDTXDate(qc.ywbm);
                             nsrjbxx = (JObject)body["fq"]["nsrjbxx"];
                             JObject sssq = (JObject)body["fq"];
+                            JToken sbQysdsczzsyjdsbqtxxVO = body.SelectToken("hq.sbQysdsczzsyjdsbqtxxVO");
                             nsrjbxx["tbrq"] = gd.tbrq;
                             sssq["sssq"]["sqQ"] = gd.skssqq;
                             sssq["sssq"]["sqZ"] = gd.skssqz;
                             setNsrxx(nsrjbxx);
+                            setQysdsQcs(sbQysdsczzsyjdsbqtxxVO);
                             initJobj["body"] = new JValue(JsonConvert.SerializeObject(body));
                             break;
                         case "cwbb_qy_kjzz_ybqy":
@@ -130,6 +140,17 @@ namespace JlueTaxSystemBeiJing.Code
                             setNsrxx(nsrjbxx);
                             initJobj["body"] = new JValue(JsonConvert.SerializeObject(body));
                             break;
+                        case "xgmzzs":
+                            gd = repos.getGDTXDate(qc.ywbm);
+                            nsrjbxx = (JObject)body["qcs"]["initData"]["nsrjbxx"];
+                            JToken zzsxgmsbInitData = body["qcs"]["initData"]["zzsxgmsbInitData"];
+                            zzsxgmsbInitData["sbrq"] = gd.tbrq;
+                            zzsxgmsbInitData["sssq"]["rqQ"] = gd.skssqq;
+                            zzsxgmsbInitData["sssq"]["rqZ"] = gd.skssqz;
+                            setNsrxx(nsrjbxx);
+                            setXgmzzsQcs(zzsxgmsbInitData);
+                            initJobj["body"] = new JValue(JsonConvert.SerializeObject(body));
+                            break;
                     }
                 }
             });
@@ -137,8 +158,10 @@ namespace JlueTaxSystemBeiJing.Code
 
         public async Task mainSetting(string ywbm, JToken input)
         {
+            HttpContext hc = System.Web.HttpContext.Current;
             await Task.Run(() =>
             {
+                System.Web.HttpContext.Current = hc;
                 switch (ywbm)
                 {
                     case "ybnsrzzsxbsz":
@@ -187,12 +210,12 @@ namespace JlueTaxSystemBeiJing.Code
 
         void getYbnsrzzsBnlj(JObject in_jo)
         {
-            string Name = YsbqcSetting.getCache().Name;
+            string Name = YsbqcSetting.getSession().Name;
             XmlDocument doc = new XmlDocument();
-            doc.LoadXml(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/industry.xml"));
+            doc.LoadXml(System.IO.File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/industry.xml"));
             JToken industry = JsonConvert.DeserializeObject<JToken>(JsonConvert.SerializeXmlNode(doc));
             industry = industry.SelectToken("root.industry").Where(a => a["name"].ToString() == Name).ToList()[0];
-            JObject zzsybnsrsbInitData_jo = JObject.Parse(File.ReadAllText(HttpRuntime.AppDomainAppPath + "/sbzs-cjpt-web/biz/sbzs/ybnsrzzs/zzsybnsrsbInitData." + industry["value"] + ".json"));
+            JObject zzsybnsrsbInitData_jo = JObject.Parse(System.IO.File.ReadAllText(HttpRuntime.AppDomainAppPath + "/sbzs-cjpt-web/biz/sbzs/ybnsrzzs/zzsybnsrsbInitData." + industry["value"] + ".json"));
             in_jo.Merge(zzsybnsrsbInitData_jo, new JsonMergeSettings { MergeArrayHandling = MergeArrayHandling.Union });
         }
 
@@ -435,8 +458,13 @@ namespace JlueTaxSystemBeiJing.Code
 
         public async Task aqsb_getSbqcList(JObject retJobj)
         {
+            HttpContext hc = System.Web.HttpContext.Current;
             JArray out_ja = new JArray();
-            List<GDTXUserYSBQC> ysbqclist = await Task.Run(() => repos.getUserYSBQC());
+            List<GDTXUserYSBQC> ysbqclist = await Task.Run(() =>
+               {
+                   System.Web.HttpContext.Current = hc;
+                   return repos.getUserYSBQC();
+               });
             foreach (GDTXUserYSBQC item in ysbqclist)
             {
                 JObject jo = new JObject();
@@ -671,6 +699,44 @@ namespace JlueTaxSystemBeiJing.Code
             xx = repos.getNsrxx();
             in_jo["yhqymc"] = xx.NSRMC;
             in_jo["userName"] = xx.NSRSBH;
+        }
+
+        private void setSfzzsxgmjz(JToken input)
+        {
+            xx = repos.getNsrxx();
+            if (xx.TaxPayerType == 1)
+            {
+                input["sfzzsxgmjz"] = "N";
+            }
+            else if (xx.TaxPayerType == 2)
+            {
+                input["sfzzsxgmjz"] = "Y";
+            }
+        }
+
+        private void setQysdsQcs(JToken input)
+        {
+            xx = repos.getNsrxx();
+            //小规模纳税人期初数不设置
+            if (xx.TaxPayerType == 2)
+            {
+                return;
+            }
+            if (xx.BusinessType == 1)//工业
+            {
+                input["yyyjje"] = "76376.11";
+            }
+            else if (xx.BusinessType == 2)//商业
+            {
+                input["yyyjje"] = "2982.85";
+            }
+        }
+
+        private void setXgmzzsQcs(JToken input)
+        {
+            input["wdqzd"] = "100000";
+            //input["zzsxgmnsrQzd"] = "300000";
+            //input["zzsxgmnsrYsfwQzd"] = "300000";
         }
 
     }

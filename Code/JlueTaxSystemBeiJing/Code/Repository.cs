@@ -225,6 +225,10 @@ namespace JlueTaxSystemBeiJing.Code
                     X.LXDH = data_jo["LXDH"].ToString();
                     X.GBHY = data_jo["GBHY"].ToString();
                     X.ZGDSSWJFJMC = data_jo["ZGDSSWJFJMC"].ToString();
+                    X.TaxPayerType = int.Parse(data_jo["TaxPayerType"].ToString());
+                    X.TaxPayerTypeName = data_jo["TaxPayerTypeName"].ToString();
+                    X.BusinessType = int.Parse(data_jo["BusinessType"].ToString());
+                    X.BusinessTypeName = data_jo["BusinessTypeName"].ToString();
                 }
             }
 

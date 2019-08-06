@@ -13,7 +13,7 @@ namespace JlueTaxSystemBeiJing.Code
 {
     public class GTXMethod
     {
-        static SessionModel sm { get { return YsbqcSetting.getCache(); } }
+        static SessionModel sm { get { return YsbqcSetting.getSession(); } }
 
         static string PracticePath { get { return ConfigurationManager.AppSettings["Practicepath"]; } }
 

@@ -55,6 +55,7 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -555,8 +556,13 @@
   <ItemGroup>
     <Compile Include="App_Start\AutofacMVCConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ChuShiHua.ashx.cs">
+      <DependentUpon>ChuShiHua.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Code\ActionFilter.cs" />
+    <Compile Include="Code\AuthenticationFilter.cs" />
     <Compile Include="Code\AuthorizationFilter.cs" />
+    <Compile Include="Code\CustomHandler.cs" />
     <Compile Include="Code\ExceptionFilter.cs" />
     <Compile Include="Code\Extensions.cs" />
     <Compile Include="Code\GDTXUserYSBQC.cs" />
@@ -566,6 +572,7 @@
     <Compile Include="Code\GTXResult.cs" />
     <Compile Include="Code\publicmethod.cs" />
     <Compile Include="Code\Repository.cs" />
+    <Compile Include="Code\ResultFilter.cs" />
     <Compile Include="Code\SBZT.cs" />
     <Compile Include="Code\Service.cs" />
     <Compile Include="Code\YsbqcSetting.cs" />
@@ -730,7 +737,6 @@
     <Content Include="Views\Shared\make.cshtml" />
     <Content Include="Views\Shared\well.cshtml" />
     <Content Include="Views\tycx\sbxxcx.cshtml" />
-    <Content Include="Views\xxmh\index_login.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="xxmh\bj\tzgg\query.json" />
     <Content Include="xxmh\cygnController\getCygncdDetail.json" />
@@ -758,7 +764,9 @@
     <Folder Include="sbzs-cjpt-web\sb\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ChuShiHua.ashx" />
     <None Include="Properties\PublishProfiles\IIS.pubxml" />
+    <Content Include="Views\xxmh\index_login.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

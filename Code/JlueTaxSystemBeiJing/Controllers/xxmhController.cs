@@ -63,22 +63,29 @@ namespace JlueTaxSystemBeiJing.Controllers
                 jo["userId"] = userId;
                 jo["Name"] = Name;
 
-                YsbqcSetting.insertCache(jo);
+                YsbqcSetting.insertSession(jo);
 
-                string split;
-                split = "/";
-                string path = AppDomain.CurrentDomain.BaseDirectory + split + "Log";
+                string split = "/";
+                string logPath = AppDomain.CurrentDomain.BaseDirectory + split + "Log";
+                DirectoryInfo[] DIs = Directory.CreateDirectory(logPath).GetDirectories();
+                foreach (DirectoryInfo DI in DIs)
+                {
+                    if (DI.LastWriteTime.Date != DateTime.Now.Date)
+                    {
+                        DI.Delete(true);
+                    }
+                }
+
+                string path = AppDomain.CurrentDomain.BaseDirectory + split + "Log" + split + YsbqcSetting.getSession().userId;
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
                 string fileFullPath = path + split + "Session.json";
                 StringBuilder str = new StringBuilder();
                 str.Append(JsonConvert.SerializeObject(jo));
-                StreamWriter sw;
-                sw = System.IO.File.CreateText(fileFullPath);
+                StreamWriter sw = System.IO.File.CreateText(fileFullPath);
                 sw.WriteLine(str.ToString());
                 sw.Close();
             }
-
             return View();
         }
 
