@@ -594,6 +594,9 @@
     <Compile Include="Models\Sbzfmx.cs" />
     <Compile Include="Models\SessionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VideoManage\GetVideo.ashx.cs">
+      <DependentUpon>GetVideo.ashx</DependentUpon>
+    </Compile>
     <Compile Include="VideoManage\VideoGDTax.aspx.cs">
       <DependentUpon>VideoGDTax.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -767,6 +770,7 @@
     <Content Include="ChuShiHua.ashx" />
     <None Include="Properties\PublishProfiles\IIS.pubxml" />
     <Content Include="Views\xxmh\index_login.cshtml" />
+    <Content Include="VideoManage\GetVideo.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
